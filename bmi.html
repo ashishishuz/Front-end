@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #calculator {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <label for="age">Age:</label>
+  <input type="number" id="age" placeholder="Enter age">
+
+  <label for="height">Height (cm):</label>
+  <input type="number" id="height" placeholder="Enter height in cm">
+
+  <label for="weight">Weight (kg):</label>
+  <input type="number" id="weight" placeholder="Enter weight in kg">
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function calculateBMI() {
+    var age = parseFloat(document.getElementById('age').value);
+    var height = parseFloat(document.getElementById('height').value);
+    var weight = parseFloat(document.getElementById('weight').value);
+
+    if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+      alert('Please enter valid values for age, height, and weight.');
+      return;
+    }
+
+    if(height&&weight){
+
+    var bmi = weight / ((height / 100) * (height / 100));
+    if(bmi < 18.6){
+    var result = 'Under weight: with bmi ' + bmi.toFixed(2);
+    }
+    else if(bmi >= 18.6 && bmi < 24.9 ){
+        var result = 'Normal weight: with bmi ' + bmi.toFixed(2);
+
+
+    }
+
+    else{
+        var result = 'Over weight: with bmi ' + bmi.toFixed(2);
+
+
+    }
+
+    if (age < 18) {
+      result += ' (Note: BMI calculations for individuals under 18 may not be accurate)';
+    }
+
+    document.getElementById('result').innerText = result;
+
+  }
+}
+
+</script>
+<a href="index.html">Home Page</a>
+
+
+
+
+</body>
+</html>
